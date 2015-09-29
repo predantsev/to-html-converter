@@ -14,6 +14,6 @@ public class TextToHtmlServiceImpl implements TextToHtmlService {
 
     @Override
     public String textToHtml(Collection<String[]> postRequestText) {
-        return TextToHtmlUtil.processStrings(postRequestText);
+        return TextToHtmlUtil.convertToHtml(postRequestText);
     }
 }
