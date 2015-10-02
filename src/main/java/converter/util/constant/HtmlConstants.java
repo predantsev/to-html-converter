@@ -1,4 +1,4 @@
-package converter.util;
+package converter.util.constant;
 
 /**
  * Created by Vyacheslav Predantsev on 01.10.2015
@@ -14,5 +14,5 @@ public class HtmlConstants {
     public final static String EM_START_TAG = "<em>";
     public final static String EM_END_TAG = "</em>";
     public final static String STRONG_START_TAG = "<strong>";
-    public final static String STRONG_TAG = "</strong>";
+    public final static String STRONG_END_TAG = "</strong>";
 }

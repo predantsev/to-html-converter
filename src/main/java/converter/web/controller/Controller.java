@@ -19,7 +19,6 @@ public class Controller {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String postBodyTextToHtml(HttpServletRequest request) {
-//        String handledRequest = RequestBodyHandler.handle(request.getParameterMap().values());
         return textToHtmlService.textToHtml(request.getParameterMap());
     }
 }
