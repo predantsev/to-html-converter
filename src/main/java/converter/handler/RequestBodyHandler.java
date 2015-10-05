@@ -1,6 +1,8 @@
-package converter.util;
+package converter.handler;
 
-import converter.util.constant.SymbolConstants;
+import converter.util.StringUtil;
+import converter.util.constant.SymbolConstant;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -9,9 +11,10 @@ import java.util.Map;
  * Post request body may consist of several string's pairs key-value
  * This situation will handle in such way that there is only one string with new lines
  */
+@Component
 public class RequestBodyHandler {
 
-    public static String handle(Map<String, String[]> postRequestText) {
+    public String handle(Map<String, String[]> postRequestText) {
         StringBuilder sb = new StringBuilder();
         for (String param: postRequestText.keySet()) {
             if (StringUtil.isNotEmpty(param)) {
@@ -19,7 +22,7 @@ public class RequestBodyHandler {
             }
             String[] params = postRequestText.get(param);
             for (String str: params) {
-                sb.append(SymbolConstants.NEWLINE);
+                sb.append(SymbolConstant.NEWLINE);
                 sb.append(str);
             }
         }

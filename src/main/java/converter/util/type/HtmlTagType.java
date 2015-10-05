@@ -6,6 +6,5 @@ package converter.util.type;
 public enum HtmlTagType {
 
     H_TAG,
-    P_TAG,
-    A_TAG
+    P_TAG
 }

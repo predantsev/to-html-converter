@@ -1,8 +1,9 @@
 package converter.service.impl;
 
 import converter.service.api.TextToHtmlService;
-import converter.util.RequestBodyHandler;
-import converter.util.TextToHtmlUtil;
+import converter.handler.RequestBodyHandler;
+import converter.handler.TextToHtmlHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -13,9 +14,16 @@ import java.util.Map;
 @Service
 public class TextToHtmlServiceImpl implements TextToHtmlService {
 
+    @Autowired
+    private RequestBodyHandler requestBodyHandler;
+
+    @Autowired
+    private TextToHtmlHandler textToHtmlHandler;
+
+
     @Override
     public String textToHtml(Map<String, String[]> postRequestText) {
-        String handledRequest = RequestBodyHandler.handle(postRequestText);
-        return TextToHtmlUtil.convertToHtml(handledRequest);
+        String handledRequest = requestBodyHandler.handle(postRequestText);
+        return textToHtmlHandler.convertToHtml(handledRequest);
     }
 }

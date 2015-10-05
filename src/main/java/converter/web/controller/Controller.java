@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Controller {
 
     @Autowired
-    TextToHtmlService textToHtmlService;
+    private TextToHtmlService textToHtmlService;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String postBodyTextToHtml(HttpServletRequest request) {

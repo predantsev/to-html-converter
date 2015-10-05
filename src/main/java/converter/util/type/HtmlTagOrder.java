@@ -6,6 +6,5 @@ package converter.util.type;
 public enum HtmlTagOrder {
 
     START,
-    END,
-    ALONE
+    END
 }
