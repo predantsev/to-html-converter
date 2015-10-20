@@ -19,6 +19,7 @@ public class Controller {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String postBodyTextToHtml(HttpServletRequest request) {
-        return textToHtmlService.textToHtml(request.getParameterMap());
+        boolean persist = Boolean.valueOf(request.getHeader("save"));
+        return textToHtmlService.textToHtml(persist, request.getParameterMap());
     }
 }

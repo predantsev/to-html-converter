@@ -27,10 +27,6 @@ public class StringUtil {
         }
         int targetIndex = source.indexOf(target);
         int targetSize = target.length();
-        StringBuilder sb = new StringBuilder();
-        sb.append(source.substring(0, targetIndex))
-                .append(replacement)
-                .append(source.substring(targetIndex + targetSize, source.length()));
-        return sb.toString();
+        return source.substring(0, targetIndex) + replacement + source.substring(targetIndex + targetSize, source.length());
     }
 }

@@ -7,5 +7,5 @@ import java.util.Map;
  */
 public interface TextToHtmlService {
 
-    String textToHtml(Map<String, String[]> postRequestText);
+    String textToHtml(boolean persist, Map<String, String[]> postRequestText);
 }

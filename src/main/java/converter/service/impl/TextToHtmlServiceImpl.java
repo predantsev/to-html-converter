@@ -1,5 +1,6 @@
 package converter.service.impl;
 
+import converter.dao.api.RequestDao;
 import converter.service.api.TextToHtmlService;
 import converter.handler.RequestBodyHandler;
 import converter.handler.TextToHtmlHandler;
@@ -18,12 +19,17 @@ public class TextToHtmlServiceImpl implements TextToHtmlService {
     private RequestBodyHandler requestBodyHandler;
 
     @Autowired
+    private RequestDao requestDao ;
+
+    @Autowired
     private TextToHtmlHandler textToHtmlHandler;
 
-
     @Override
-    public String textToHtml(Map<String, String[]> postRequestText) {
+    public String textToHtml(boolean persist, Map<String, String[]> postRequestText) {
         String handledRequest = requestBodyHandler.handle(postRequestText);
+        if (persist) {
+            requestDao.saveRequest(handledRequest);
+        }
         return textToHtmlHandler.convertToHtml(handledRequest);
     }
 }
