@@ -1,10 +1,10 @@
 package converter.service.impl;
 
 import converter.dao.api.RequestDao;
+import converter.handler.Handler;
 import converter.service.api.TextToHtmlService;
-import converter.handler.RequestBodyHandler;
-import converter.handler.TextToHtmlHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -16,13 +16,15 @@ import java.util.Map;
 public class TextToHtmlServiceImpl implements TextToHtmlService {
 
     @Autowired
-    private RequestBodyHandler requestBodyHandler;
+    @Qualifier("requestBodyHandler")
+    private Handler<Map<String, String[]>> requestBodyHandler;
 
     @Autowired
     private RequestDao requestDao ;
 
     @Autowired
-    private TextToHtmlHandler textToHtmlHandler;
+    @Qualifier("textToHtmlHandler")
+    private Handler<String> textToHtmlHandler;
 
     @Override
     public String textToHtml(boolean persist, Map<String, String[]> postRequestText) {
@@ -30,6 +32,6 @@ public class TextToHtmlServiceImpl implements TextToHtmlService {
         if (persist) {
             requestDao.saveRequest(handledRequest);
         }
-        return textToHtmlHandler.convertToHtml(handledRequest);
+        return textToHtmlHandler.handle(handledRequest);
     }
 }

@@ -13,10 +13,11 @@ import java.util.StringTokenizer;
 /**
  * Created by Vyacheslav Predantsev on 29.09.2015
  */
-@Component
-public class TextToHtmlHandler {
+@Component("textToHtmlHandler")
+public class TextToHtmlHandler implements Handler<String> {
 
-    public String convertToHtml(String stringToConvert) {
+    @Override
+    public String handle(String stringToConvert) {
         return HtmlConstant.HTML_START_TAG
                 + SymbolConstant.NEWLINE
                 + HtmlConstant.BODY_START_TAG
